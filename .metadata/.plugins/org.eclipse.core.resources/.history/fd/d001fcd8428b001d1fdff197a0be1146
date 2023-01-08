@@ -1,0 +1,14 @@
+package com.ezen.book.domain;
+
+public class BoardVO {
+
+	private int brd_num;
+	private int brd_mem_num;
+	private Stirng brd_category;
+	private Stirng brd_title;
+	private Stirng brd_writer;
+	private Stirng brd_content;
+	private Stirng brd_regdate;
+	private int brd_views;
+	private int brd_cot_num;
+}

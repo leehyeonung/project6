@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.main{
+	margin: 0px 196px;
+}
+
+.sub{
+	font-size: 70px;
+	font-weight: bold;
+}
+.long{
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.short{
+	color: gray;
+}
+h1{
+	font-size: 10px;
+}

@@ -1,0 +1,9 @@
+@charset "UTF-8";
+*{
+	margin: 0 auto;
+	padding: 0px;
+	
+}
+.main{
+    width: 1260px;
+}

@@ -1,0 +1,11 @@
+package com.ezen.book.repository;
+
+import java.util.List;
+
+import com.ezen.book.domain.OrderVO;
+
+public interface OrderDAO {
+
+	List<OrderVO> selectBoardList();
+
+}

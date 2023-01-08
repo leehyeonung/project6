@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.ezen.book.repository.BoardDAO">
+	
+	<select id="selectBoardListPaging" resultType="com.ezen.book.domain.BoardVO">
+			select*from board 
+			<include refid="search"></include>
+			order by brd_num desc limit #{pageStart},#{qty}
+	</select>
+	
+	<select id="searchTotalCount" resultType="int">
+	select count(brd_num) from board<include refid="search"></include>
+	</select>
+	
+		<sql id="search">
+		<if test="type != null">
+			<trim prefix="and (" suffix=")" prefixOverrides="OR">
+				<foreach collection="typeToArray" item="type">
+					<trim prefix="OR">
+						<choose>
+							<when test="type=='t'.toString()">
+								title like concat('%',#{keyword},'%')
+							</when>
+							<when test="type=='c'.toString()">
+								content like concat('%',#{keyword},'%')
+							</when>
+							<when test="type=='w'.toString()">
+								writer like concat('%',#{keyword},'%')
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+	
+	</mapper>

@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.intro{
+   display: flex;
+   justify-content: flex-start;
+}

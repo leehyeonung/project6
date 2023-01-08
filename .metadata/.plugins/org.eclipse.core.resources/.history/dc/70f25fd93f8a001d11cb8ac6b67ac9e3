@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+<a href="#">로고자리</a>
+<table>
+	<tr>
+		<td>ID</td>
+		<td><input type="text"></td>
+	</tr>
+	<tr>
+		<td>pw</td>
+		<td><input type="text"></td>
+	</tr>
+	<tr>
+		<td>address</td>
+		<td><input type="text"></td>
+	</tr>
+	<tr>
+		<td>age</td>
+		<td><input type="text"></td>
+	</tr>
+	<tr>
+		<td>gender</td>
+		<td><input type="text"></td>
+	</tr>
+	<tr>
+		<td>phone</td>
+		<td><input type="text"></td>
+	</tr>
+</table>
+</body>
+</html>

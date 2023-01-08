@@ -1,0 +1,28 @@
+@charset "UTF-8";
+*{
+	margin: 0 auto;
+	padding: 0px;
+
+}
+.main{
+	margin: 0 auto;
+    width: 1260px;
+    background-color: gray;
+    
+
+}
+.id{
+    font-size: 30px;
+}
+.information{
+	background-color : red;
+}
+.box{
+	padding : 0px;
+    float: left;
+    display: inline-block;
+	width : 20%;
+	height : 100%;
+    background-color: blue;
+    padding: 10px;
+}

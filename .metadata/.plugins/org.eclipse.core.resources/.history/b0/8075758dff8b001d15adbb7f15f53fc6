@@ -1,0 +1,62 @@
+package com.ezen.myProject.contoller;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ezen.myProject.domain.CommentVO;
+import com.ezen.myProject.service.CommentService;
+
+import lombok.extern.slf4j.Slf4j;
+
+
+
+@Slf4j
+@RequestMapping("/comment/*")
+@Controller
+public class CommentController {
+
+	@Inject
+	private CommentService csv;
+
+	//value : mapping값 설정, consumes : 가져오는 값의 형태(application/json),
+	//produces : 보낼때의 형식{MediaType.text_plain_value}
+	@PostMapping(value="/post", consumes="application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> post(@RequestBody CommentVO cvo){
+		log.info(">>> comment post : "+cvo.toString());
+		int isUp = csv.register(cvo);
+		log.info(">>> register isUp : "+(isUp>0? "ok" : "fail"));
+		
+		return isUp>0? new ResponseEntity<String>("1",HttpStatus.OK)
+				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@GetMapping(value="/{bno}",produces= {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<List<CommentVO>> spread(@PathVariable("bno")int bno){
+		log.info(">>>> comment List bno : "+bno);
+		List<CommentVO> list = csv.getList(bno);
+		return new ResponseEntity<List<CommentVO>>(list,HttpStatus.OK);
+	}
+	
+	@PutMapping(value = "/{cno}", consumes = "application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> edit(@PathVariable("cno")int cno, @RequestBody CommentVO cvo){
+		log.info(">>>> comment modifyt cno : "+cno);
+		log.info(">>>> comment modifyt cno : "+cvo.toString());
+		int isUp=csv.modify(cvo);
+		return isUp>0?
+				new ResponseEntity<String>("1",HttpStatus.OK)
+				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+}

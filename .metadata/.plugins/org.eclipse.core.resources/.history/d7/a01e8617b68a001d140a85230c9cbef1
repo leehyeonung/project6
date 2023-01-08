@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<a href="#">로고자리</a><br>
+<a href="/mem/login-member"><button>회원</button></a>
+<a href="/mem/login-Non-member"><button>비회원</button></a>
+주문번호<input type="text" placeholder="주문번호"><Br>
+주문비밀번호<input type="text" placeholder="주문비밀번호"><br>
+<a><button type="button">확인</button></a><br>
+
+
+<a href="#">주문번호 찾기</a>
+<a href="#">주문비밀번호 찾기</a> 
+
+
+</body>
+</html>

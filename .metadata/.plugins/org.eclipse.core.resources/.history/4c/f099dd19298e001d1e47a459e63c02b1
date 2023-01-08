@@ -1,0 +1,57 @@
+@charset "UTF-8";
+*{
+	margin: 0 auto;
+	padding: 0px;
+}
+
+.main{
+	margin: 0 auto;
+    width: 1260px;
+    background-color: gray;
+}
+
+.select{
+	width:1260px;
+	height:500px;
+}
+
+.id{
+    font-size: 30px;
+}
+
+.information{
+	background-color : red;
+}
+
+#padding{
+	padding-left: 0px;
+}
+.box{
+    float: left;
+    display: inline-block;
+	width : 20%;
+	height : 100%;
+	text-align: center;
+	background-color: white;
+}
+
+a {
+   text-decoration-line: none;
+   color: black;
+}
+
+a:visited {
+   text-decoration: none;
+}
+
+a:hover {
+   text-decoration: none;
+}
+
+a:focus {
+   text-decoration: none;
+}
+
+a:hover, a:active {
+   text-decoration: none;
+}

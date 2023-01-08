@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.book.repository.OrderDAO">
+
+	<select id="selectOrderList" resultType="com.ezen.book.domain.OrderVO">
+		select order_num, order_mem_num, order_sta from productorder
+		inner join member
+		on mem_num = order_mem_num where order_mem_num=#{mem_num};
+	</select>
+	
+	<select id="selectBuyList" resultType="com.ezen.book.domain.OrderVO">
+		select order_num, order_mem_num, order_sta from productorder
+		inner join member
+		on mem_num = order_mem_num where order_mem_num=#{mem_num} and order_sta='1';
+	</select>
+	
+	
+	
+	<select id="searchTotalCount" resultType="int">
+		select count(order_num) from productorder where order_sta=1;
+	</select>
+
+</mapper>

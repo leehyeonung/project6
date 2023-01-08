@@ -1,0 +1,17 @@
+package com.ezen.book.service;
+
+import java.util.List;
+
+import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.OrderVO;
+import com.ezen.book.domain.PagingVO;
+
+public interface OrderService {
+
+	
+
+	int getTotalCount(PagingVO pvo);
+
+	List<OrderVO> getList(PagingVO pvo, String status, MemberVO mvo);
+
+}

@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+1대1문의 페이지입니다.
+<button onclick='allBoard' type="button">전체</button>
+<button>나의 질문</button>
+<button>답변</button>
+<button>공지사항</button>
+<table>
+
+<div id='result'>
+</div>
+</table>
+
+  <script type="text/javascript">
+         function allBoard(event) {
+           document.getElementById('result').innerText = 
+             asdf
+         }
+  </script>
+
+</body>
+</html>

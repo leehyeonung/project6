@@ -1,0 +1,76 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+	text-align: center;
+	margin:0 auto;
+	width: 100vh;
+	padding-top : 150px;
+}
+.logo>a>img{
+	width: 150px;
+	height: 150px;
+}
+.login-container{
+	border: 1px solid gray;
+	width: 500px;
+	height: 100%;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+div{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.api>a>img{
+	margin-top : 10px;
+	width: 50px;
+	height: 50px;
+}
+</style>
+</head>
+<body>
+<button>회원</button>
+<button>비회원</button><br>
+	<div class="login-container">
+		<div class="logo">
+			<a href="/"><img src="../resources/logo.jpg" alt="로고"></a><br>
+		</div>
+		<div class="login">
+			<form action="/mem/login" method="post">
+				ID<input type="text" placeholder="ID" name="mem_id"><Br>
+				PW<input type="password" placeholder="Password" name="mem_pw"><br><br>
+				<a><button type="submit">확인</button></a><br><br>
+			</form>
+			<div>
+				<a>비밀번호찾기</a>
+				<a>아이디찾기</a> 
+				<a>회원가입</a>
+			</div>
+			
+		</div>
+
+	<div>
+		<span>
+			<hr width="300px">
+			<div class="login_line">
+				<span>SNS로 3초만에 로그인</span>
+			</div>
+		</span>
+		<div class="api">
+			<a href="#"><img src="../resources/btnG_icon_circle.png"></a>
+			<button>카카오</button>
+			<button>구글</button>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+@charset "UTF-8";
+.col-sm-12 col-md-6{
+	display: inline-block;
+}

@@ -1,0 +1,92 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+
+<head>
+<style type="text/css">
+.pw_ok{
+color:#008000;
+display: none;
+}
+
+.pw_rewrite{
+color:#ff0000; 
+display: none;
+}
+.pw_null{
+color:#ff0000; 
+display: none;
+}
+</style>
+<meta charset="UTF-8">
+<!-- CSS only -->
+<script src="https://kit.fontawesome.com/92e616dfba.js" crossorigin="anonymous"></script
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
+rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
+crossorigin="anonymous">
+<title>수정페이지</title>
+<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
+</head>
+<body>
+<jsp:include page="../layout/header.jsp"></jsp:include>
+<div class="main">
+	<form action="/mem/modify" method="post">		
+		<input type="text" name="mem_num" value="${ses.mem_num}" hidden ><br>
+		이름:<input type="text" name="mem_name" value="${ses.mem_name}" readonly ><br>
+		나이:<input type="text" name="mem_age" value="${ses.mem_age}" readonly ><br>
+		성별:<input type="text" name="mem_gender" value="${ses.mem_gender}" readonly ><br>
+		아이디:<input type="text" name="mem_id" value="${ses.mem_id}" readonly ><br>
+		비밀번호:<input type="password" name="mem_pw" id="mem_pw" onchange="checkPw()" placeholder="비밀번호를 입력해주세요." required ><br>
+		<span class="pw_ok"><i class="fa-solid fa-check"></i></span>
+                           <span class="pw_rewrite"><i class="fa-solid fa-x"></i></span>
+                           <span class="pw_null"><i class="fa-solid fa-x"></i></span>
+		주소:<input type="text" name="mem_ad" value="${ses.mem_ad}" ><br>
+		핸드폰번호:<input type="text" name="mem_cell_num" value="${ses.mem_cell_num}" ><br>
+		선호카테고리:<select name="mno_cno">
+			<option value="소설">소설</option>
+			<option value="에쎄이">에쎼이</option>
+			<option value="건강/취미">건강/취미</option>
+			<option value="컴퓨터/모바일">컴퓨터/모바일</option>
+			</select>
+		
+		<button type="submit" class="btn btn-secondary">수정하기!</button>
+	</form>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+	   function checkPw(){
+		   var mem_pw = document.getElementById('mem_pw').value; //id값이 "id"인 입력란의 값을 저장
+		   console.log(mem_pw);
+		   $.ajax({
+		      url:'/mem/pwCheck', //Controller에서 요청 받을 주소
+		      type:'post', //POST 방식으로 전달
+		      data:{mem_pw:mem_pw},
+		      success:function(isOk){ //컨트롤러에서 넘어온 isOK값을 받는다 
+		         if(isOk == 'pw_ok'){ //ok이면 가입 가능
+		            $('.pw_ok').css("display","inline-block"); 
+		            $('.pw_rewrite').css("display", "none"); //정규식 어긋나면
+		            $('.pw_null').css("display", "none");
+		         }else if(isOk =='pw_null'){//input이 null값임. 입력 요청
+		            $('.pw_ok').css("display","none"); 
+		            $('.pw_rewrite').css("display", "none");
+		            $('.pw_null').css("display", "inline-block");
+		         } 
+		         else { //중복일 경우
+		            $('.pw_ok').css("display", "none");
+		            $('.pw_rewrite').css("display","inline-block");
+		            $('.pw_null').css("display", "none");
+		            // alert("아이디를 다시 입력해주세요");
+		            $('#mem_pw').val('');
+		         }
+		      },
+		      error:function(request,status,error){
+		      console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		      }   
+
+		   });
+		   };   
+	</script>
+</div>
+<jsp:include page="../layout/footer.jsp"></jsp:include>	
+</body>
+</html>

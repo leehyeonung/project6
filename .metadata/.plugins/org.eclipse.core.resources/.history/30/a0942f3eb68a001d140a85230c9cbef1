@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="/mem/login-member"><button>회원</button></a>
+	<a href="/mem/login-Non-member"><button>비회원</button></a>
+	<div class="login-container">
+		<div class="logo">
+			<a href="/"><img src="../resources/logo.jpg" alt="로고"></a><br>
+		</div>
+		<div class="login">
+			<form action="/non-mem/login" method="post">
+				<input type="text" placeholder="주문 번호" name="mem_num"><Br>
+				<input type="password" placeholder="주문 비밀번호" name="mem_pw"><br><br>
+				<a><button type="submit" class="btn btn-outline-secondary">확인</button></a><br><br>
+			</form>
+			<div>
+				<a href="#">주문번호 찾기</a>
+				<a href="#">주문비밀번호 찾기</a> 
+			</div>			
+		</div>
+	</div>
+</body>
+</html>

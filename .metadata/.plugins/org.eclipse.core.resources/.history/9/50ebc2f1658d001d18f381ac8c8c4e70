@@ -1,0 +1,13 @@
+@charset "UTF-8";
+*{
+
+    margin: auto;
+	padding: 0px;
+
+}
+.main{
+    width: 1260px;
+    background-color: red;
+    
+
+}

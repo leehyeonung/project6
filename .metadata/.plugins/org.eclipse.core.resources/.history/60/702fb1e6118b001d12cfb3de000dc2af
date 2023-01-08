@@ -1,0 +1,16 @@
+package com.ezen.book.service;
+
+import java.util.List;
+
+import com.ezen.book.domain.OrderVO;
+import com.ezen.book.domain.PagingVO;
+
+public class OrderServicImpl implements OrderService {
+
+	@Override
+	public List<OrderVO> getList(PagingVO pvo) {
+		log.info(">>> board list check2");
+		return bdao.selectBoardList();
+	}
+
+}

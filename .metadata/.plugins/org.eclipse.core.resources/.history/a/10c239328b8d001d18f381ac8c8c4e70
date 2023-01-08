@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.main{
+	margin: 0px auto;
+}
+
+.info{
+	font-size:30px;
+	font-weight:900;
+}
+.long{
+	font-size:20px;
+	font-weight:900;
+}
+
+.short{
+	color: gray;
+}
+button{
+	text-decoration: none;	
+	border: none;
+	background-color: rgb(rgb(29, 25, 25), green, blue);
+}

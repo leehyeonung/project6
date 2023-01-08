@@ -1,0 +1,36 @@
+@charset "UTF-8";
+*{
+	margin: 0 auto;
+	padding: 0px;
+}
+
+.main{
+	margin: 0 auto;
+    width: 1260px;
+    background-color: gray;
+}
+
+.select{
+	width:1260px;
+	height:500px;
+}
+
+.id{
+    font-size: 30px;
+}
+
+.information{
+	background-color : red;
+}
+
+ul{
+	padding-left: 0px;
+}
+.box{
+    float: left;
+    display: inline-block;
+	width : 20%;
+	height : 100%;
+	text-align: center;
+	background-color: wheat;
+}

@@ -1,0 +1,25 @@
+package com.ezen.book.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.ezen.book.domain.OrderVO;
+import com.ezen.book.domain.PagingVO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class OrderServicImpl implements OrderService {
+
+	@Inject
+	private OrderDAO odao;
+	
+	@Override
+	public List<OrderVO> getList(PagingVO pvo) {
+		log.info(">>> board list check2");
+		return odao.selectBoardList();
+	}
+
+}

@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" type="text/css" href="/resources/css/delete.css">
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
+</head>
+<body>
+
+<jsp:include page="../layout/header.jsp"></jsp:include>
+<div class="main">
+<div class="info">
+탈퇴 안내asdfbas
+</div>
+<div class="short">회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</div>
+<div class="long">사용하고 계신 아이디(${ses.mem_id})는 탈퇴할 경우 아이디에 대한 데이터 재사용 및 복구가 불가능합니다.</div>
+<div class="short">탈퇴후 복구가 불가하오니 신중하게 선택하시기 바랍니다.</div>
+<div class="long">탈퇴 후 회원정보 및 개인형 서비스 이용기록은 모두 삭제됩니다.</div>
+<div class="short">회원정보 및 주소 등 개인형 서비스 이용기록은 모두 삭제되며, 삭제된 데이터는 복구되지 않습니다.</div>
+<div class="long">탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아 있습니다.</div>
+<div class="short">
+게시글 및 댓글은 탈퇴 시 자동 삭제되지 않고 그대로 남아 있습니다.
+삭제를 원하는 게시글이 있다면 반드시 탈퇴 전 삭제하시기 바랍니다.
+탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.
+</div>
+<table>
+<tr>
+<td>개인정보</td>
+<td>개인정보 전체 삭제</td>
+</tr>
+<tr>
+<td>1대1문의게시판</td>
+<td>질문,답변 삭제되지 않음.</td>
+</tr>
+</table>
+탈퇴 후에는 아이디 ${ses.mem_id}에 대한 데이터는 복구할 수 없습니다.
+게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.
+<form action="/mem/delete?mem_num=${ses.mem_num}" method="post" >
+<input type="checkbox" name="deletecheck" value="okay">안내 사항을 모두 확인하였으며, 이에 모두 동의합니다.
+<button type="submit">삭제</button>
+</form>
+</div>
+<jsp:include page="../layout/footer.jsp"></jsp:include>
+</body>
+</html>

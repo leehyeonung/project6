@@ -1,0 +1,16 @@
+package com.ezen.book.service;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
+import com.ezen.book.repository.MemberDAO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class MemberServiceImpl implements MemberService {
+	@Inject
+	private MemberDAO mdao;
+}

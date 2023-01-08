@@ -1,0 +1,169 @@
+package com.ezen.book.controller;
+
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.OrderVO;
+import com.ezen.book.domain.PagingVO;
+import com.ezen.book.handler.PagingHandler;
+import com.ezen.book.service.MemberService;
+import com.ezen.book.service.OrderService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RequestMapping("/mem/*")
+@Controller
+public class MemberController {
+	
+	@Inject
+	private OrderService osv;
+	
+	@Inject
+	private MemberService msv;
+
+	@GetMapping({"loginPage","login-member"})
+	public String loginPage() {
+		return "/member/login";
+	}
+	@GetMapping("login-Non-member")
+	public String loginNonPage() {
+		return "/member/login-non";
+	}
+
+	@GetMapping("joinPage")
+	public String joinPage() {
+		return "/member/join";
+	}
+
+	
+
+	@PostMapping("/login")
+	   public String login(MemberVO mvo, RedirectAttributes reAttr, HttpServletRequest req) {
+	      MemberVO mvo2 = msv.login(mvo.getMem_id(), mvo.getMem_pw());
+	      log.info("login getMem_id : "+mvo.getMem_id());
+	      log.info("login getMem_pw : "+mvo.getMem_pw());
+	      if (mvo2 != null) {
+	         HttpSession ses = req.getSession();
+	         ses.setAttribute("ses", mvo2);
+	         ses.setMaxInactiveInterval(60*10);
+	         return "redirect:/";
+	      } else {
+	         reAttr.addFlashAttribute("msg", "0");
+	         return "redirect:/mem/loginPage";
+	      }
+
+	   }
+
+	@GetMapping("/logOut")
+	public String logout(Model model, HttpServletRequest req, RedirectAttributes reAttr) {
+		req.getSession().removeAttribute("ses");
+		req.getSession().invalidate();
+
+		return "redirect:/";
+
+	}
+	
+	@GetMapping("/naverApi")
+	public String naverApiPage() {
+		return "/member/naverlogin";
+	}
+	@GetMapping("/callback")
+	public String naverApiCallback() {
+		return "/member/callback";
+	}
+	@GetMapping("/mypage")
+		public String mypage(){
+	
+			return "/member/mypage";
+	}
+	
+	@GetMapping("/modify")
+	public String modify(HttpServletRequest req) {
+		return "/member/modify";
+	}
+	
+	@PostMapping("/modify")
+	public  String modifyPost(MemberVO mvo) {		
+		log.info("mvo>>>"+mvo.toString());
+		boolean idOk=msv.checkid(mvo);
+		if (!idOk) {
+			return "/member/mypage";
+		}
+		
+		int isUp=msv.usermodify(mvo);
+		log.info(">>>modify:"+(isUp>0?"ok":"fail"));
+		return "redirect:/";
+	}
+	
+	@PostMapping("/join")
+	public String join(MemberVO mvo) {
+		log.info(">>> member join check 1");
+
+		boolean isUp = msv.join(mvo);
+		if (!isUp) {
+			return "redirect:/member/join";
+		}
+		log.info(">>> member join 성공");
+		return "redirect:/";
+	}
+	
+	
+	@GetMapping("/orderCheck")
+	public String orderList(Model model,PagingVO pvo,@RequestParam("mem_num")int mem_num){
+		log.info(">>>pageNo :"+pvo.getPageNo());
+		log.info(">>>num :"+mem_num);
+		String status="주문";
+		List<OrderVO> list=osv.getList(pvo,status,mem_num);
+		model.addAttribute("list", list);
+		int totalCount=osv.getTotalCount(pvo);
+		PagingHandler ph = new PagingHandler(pvo,totalCount);
+		model.addAttribute("pgh",ph);
+		return "/member/orderCheck";
+	}
+	
+	@GetMapping("/buyCheck")
+	public String buyList(Model model,PagingVO pvo,@RequestParam("mem_num")int mem_num){
+		log.info(">>>pageNo :"+pvo.getPageNo());
+		String status="구매";
+		List<OrderVO> list=osv.getList(pvo,status,mem_num);
+		model.addAttribute("list", list);
+		int totalCount=osv.getTotalCount(pvo);
+		PagingHandler ph = new PagingHandler(pvo,totalCount);
+		model.addAttribute("pgh",ph);
+		return "/member/buyCheck";
+	}
+	@GetMapping("/mantoman")
+	public String getManToMan() {
+		return"/member/mantoman";
+	}
+	
+	@GetMapping("/delete")
+	public String getDelte() {
+		return"/member/delete";
+	}
+	
+	@PostMapping("/delete")
+	public String MemberDelete(Model model, HttpServletRequest req, RedirectAttributes reAttr,@RequestParam("mem_num")int mem_num){
+		log.info("mem_num"+mem_num);
+		
+		req.getSession().removeAttribute("ses");
+		req.getSession().invalidate();
+
+		return "/home";
+	}
+	
+	
+}

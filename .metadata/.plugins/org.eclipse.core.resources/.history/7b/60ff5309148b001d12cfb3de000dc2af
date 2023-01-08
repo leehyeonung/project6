@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.book.repository.NonMemberDAO">
+
+	<select id="selectBoardList" resultType="com.ezen.book.domain.OrderVO">
+		select*from order where order_sta=1;
+	</select>
+	
+
+</mapper>

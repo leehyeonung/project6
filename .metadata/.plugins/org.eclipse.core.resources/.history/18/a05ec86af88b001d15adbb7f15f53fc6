@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+detail 페이지입니다.
+아이디 : ${ses.mem_id}
+게시판제목 : ${board.brd_title}
+
+<table border="1">
+	<tr>
+		<th>번호</th>
+		<td>${board.brd_num}</td>
+	</tr>
+	<tr>
+		<th>제목</th>
+		<td>${board.brd_title}</td>
+	</tr>
+	<tr>
+		<th>작성자</th>
+		<td>${board.brd_writer}</td>
+	</tr>
+	<tr>
+		<th>작성일</th>
+		<td>${board.brd_regdate}</td>
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td>${board.brd_content}</td>
+	</tr>
+	<tr>
+		<th>조회수</th>
+		<td>${board.brd_views}</td>
+	</tr>
+</table>
+
+<c:if test="${board.brd_writer eq ses.mem_id}">
+<a href="/board/modify?brd_num=${board.brd_num}">수정</a><br>
+<a href="/board/remove?brd_num=${board.brd_num}">삭제</a><br>
+</c:if>
+
+<a href="/board/list">1대1문의 리스트</a><br>
+
+</body>
+</html>

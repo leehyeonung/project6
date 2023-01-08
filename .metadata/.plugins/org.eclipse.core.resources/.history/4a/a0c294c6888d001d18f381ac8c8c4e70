@@ -1,0 +1,18 @@
+@charset "UTF-8";
+.main{
+	margin: 0px auto;
+}
+
+.info{
+	font-size:50px;
+	font-weight:900;
+	color: red;
+}
+.long{
+	font-size:90px;
+	font-weight:900;
+}
+
+.short{
+	color: gray;
+}

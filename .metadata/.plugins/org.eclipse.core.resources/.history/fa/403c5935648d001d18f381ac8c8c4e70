@@ -1,0 +1,10 @@
+@charset "UTF-8";
+*{
+	margin: 0 auto;
+	padding: 0px;
+	display: flex;
+	justify-content: center;
+}
+.main{
+    width: 1260px;
+}

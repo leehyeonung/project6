@@ -1,0 +1,25 @@
+@charset "UTF-8";
+*{
+	margin: 0 auto;
+	padding: 0px;
+
+}
+.main{
+    margin: auto;
+    width: 1260px;
+    background-color: gray;
+    
+
+}
+.id{
+    font-size: 30px;
+}
+.information{
+	background-color : red;
+}
+select>ul>li{
+    display: inline-block;
+	float : left;
+	width : 20%;
+    background-color: blue;
+}

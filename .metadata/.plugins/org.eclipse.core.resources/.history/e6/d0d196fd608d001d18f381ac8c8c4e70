@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<ul>
+	${ses.mem_id}님 환영합니다!!!
+	<li><a href="/mem/modify">회원정보수정</a></li>
+	<li><a href="/mem/orderCheck?mem_num=${ses.mem_num}">주문/배송조회</a></li>
+	<li><a href="/mem/buyCheck?mem_num=${ses.mem_num}">구매함</a></li>
+	<li><a href="/board/list">1대1문의</a></li>
+	<li><a href="/mem/delete">회원탈퇴</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,5 @@
+package com.ezen.book.repository;
+
+public interface BoardDAO {
+
+}

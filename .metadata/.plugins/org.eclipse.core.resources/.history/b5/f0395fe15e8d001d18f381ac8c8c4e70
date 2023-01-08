@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.main{
+	margin: 0px 196px;
+}
+.subject{
+	font-size: 50px;
+	font-weight: 500;
+	
+}
+.short{
+	color: gray;
+}
+h1{
+	font-size: 20px;
+}
+
+h3{
+	color: gray;
+}
